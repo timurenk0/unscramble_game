@@ -1,4 +1,4 @@
-# unscramble_game
+# Unscramble
 Game where a player needs to successfully unscramble the riddled word
 
 

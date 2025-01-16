@@ -2,6 +2,10 @@ const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
 const scoreTextEl = document.getElementById("score");
 const addedScoreTextEl = document.getElementById("added-score");
+const authorNameTextEl = document.getElementById("author-name");
+
+const authorName = "timurenk0";
+authorNameTextEl.textContent = authorName;
 
 const words = [
     "apple", "brave", "chair", "dance", "eagle", "faith", "giant", "house", "input", "jolly", 
