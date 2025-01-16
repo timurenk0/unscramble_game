@@ -1,5 +1,7 @@
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
+const scoreTextEl = document.getElementById("score");
+const addedScoreTextEl = document.getElementById("added-score");
 
 const words = [
     "apple", "brave", "chair", "dance", "eagle", "faith", "giant", "house", "input", "jolly", 
@@ -15,6 +17,7 @@ const words = [
   ];
 
 let scrambledWordIndex;
+let score = 0;
 
 updateGame();
 
@@ -44,6 +47,7 @@ function updateGame() {
     let randomIndex = Math.floor(Math.random()*(words.length-1));
     scrambledWordIndex = randomIndex;
     scrambledWordTextEl.textContent = scrambleWord(words[randomIndex]);
+    scoreTextEl.textContent = score;
 }
 
 function checkUserInput() {
@@ -53,12 +57,22 @@ function checkUserInput() {
         alert("Input cannot be empty!");
     } 
     if (userInput === words[scrambledWordIndex]) {
-        updateGame();
+        score+=1;
         alert("Success");
+        updateGame();
+        displayAddedScore();
     } else {
         userInputEl.value = "";
         alert("Bad luck! Try again.");
     }
+}
+
+function displayAddedScore() {
+    addedScoreTextEl.classList.add("visible");
+
+    setTimeout(() => {
+        addedScoreTextEl.classList.remove("visible");
+    }, 500)
 }
 
 document.addEventListener("keydown", (event) => {

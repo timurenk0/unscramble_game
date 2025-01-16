@@ -28,6 +28,28 @@ body {
     box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, 0.2);
 }
 
+#game-wrapper #score-wrapper {
+    position: absolute;
+    right: 0;
+
+    text-align: right;
+    padding: 5px 10px;
+}
+
+#score-wrapper #added-score {
+    font-size: 12px;
+    color: rgba(0, 185, 0, 0.65);
+
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#score-wrapper #added-score.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 #game-wrapper #main-text {
     width: 90%;
     text-align: center;
