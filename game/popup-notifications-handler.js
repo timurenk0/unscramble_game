@@ -1,5 +1,6 @@
 const notificationTextEl = document.getElementById("notification-text");
 const popupNotificationWrapperEl = document.getElementById("popup-notification-wrapper");
+const addedScoreTextEl = document.getElementById("added-score");
 
 export function displayNotification(messageText, messageColor) {
     popupNotificationWrapperEl.classList.add("visible");
@@ -11,3 +12,10 @@ export function displayNotification(messageText, messageColor) {
     }, 2000);
 }
 
+export function displayAddedScore() {
+    addedScoreTextEl.classList.add("visible");
+
+    setTimeout(() => {
+        addedScoreTextEl.classList.remove("visible");
+    }, 500)
+}

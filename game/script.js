@@ -1,9 +1,8 @@
-import { displayNotification } from "./popup-notifications-handler.js";
+import { displayNotification, displayAddedScore } from "./popup-notifications-handler.js";
 
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
 const scoreTextEl = document.getElementById("score");
-const addedScoreTextEl = document.getElementById("added-score");
 const authorNameTextEl = document.getElementById("author-name");
 
 const authorName = "timurenk0";
@@ -59,8 +58,9 @@ function updateGame() {
 function checkUserInput() {
     let userInput = userInputEl.value;
     
-    if (userInputEl.value === "") {
+    if (userInput === "") {
         displayNotification("Input cannot be empty!", "rgba(0, 0, 0, 0.5)");
+        return ;
     } 
     if (userInput === words[scrambledWordIndex]) {
         score+=1;
@@ -71,14 +71,6 @@ function checkUserInput() {
         userInputEl.value = "";
         displayNotification("Bad luck! Try again.", "rgb(255, 0, 0)");
     }
-}
-
-function displayAddedScore() {
-    addedScoreTextEl.classList.add("visible");
-
-    setTimeout(() => {
-        addedScoreTextEl.classList.remove("visible");
-    }, 500)
 }
 
 document.addEventListener("keydown", (event) => {
