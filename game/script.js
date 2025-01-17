@@ -1,3 +1,5 @@
+import { displayNotification } from "./popup-notifications-handler.js";
+
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
 const scoreTextEl = document.getElementById("score");
@@ -57,17 +59,17 @@ function updateGame() {
 function checkUserInput() {
     let userInput = userInputEl.value;
     
-    if (userInput === "") {
-        alert("Input cannot be empty!");
+    if (userInputEl.value === "") {
+        displayNotification("Input cannot be empty!", "rgba(0, 0, 0, 0.5)");
     } 
     if (userInput === words[scrambledWordIndex]) {
         score+=1;
-        alert("Success");
         updateGame();
         displayAddedScore();
+        displayNotification("Good job!", "rgb(19, 167, 0)");
     } else {
         userInputEl.value = "";
-        alert("Bad luck! Try again.");
+        displayNotification("Bad luck! Try again.", "rgb(255, 0, 0)");
     }
 }
 

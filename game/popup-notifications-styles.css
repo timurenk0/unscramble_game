@@ -1,0 +1,26 @@
+#popup-notification-wrapper {
+    position: absolute;
+    top: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, .75);
+    padding: 15px 50px;
+    border-radius: 50px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#popup-notification-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#popup-notification-wrapper #notification-text {
+    font-size: 14px;
+    text-align: center;
+}
