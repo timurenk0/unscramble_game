@@ -1,7 +1,8 @@
+import { displayNotification } from "../popup-notifications-handler.js";
+
 const form = document.getElementById("submission-form");
 const submitButton = document.getElementById("submit");
 const togglePasswordButtons = document.querySelectorAll(".toggle-password");
-const passwordsMatchTextEl = document.getElementById("password-match");
 
 
 togglePasswordButtons.forEach(button => {
@@ -24,25 +25,28 @@ function checkUserInput() {
 
     for (const [key, value] of formData.entries()) {
         if (!value.trim()) {
-            alert(`${key} cannot be empty`);
-            return ;
+            displayNotification(`${key} field cannot be empty`, "rgb(255, 0, 0)");
+            return false;
         }
     }
 
     if (formData.get("password").length < 4) {
-        alert("Password cannot be shorter than 4 characters!");
-        return ;
+        displayNotification("Password cannot be shorter than 4 characters!", "rgb(255, 0, 0)");
+        return false;
     } else if (formData.get("password") !== formData.get("repeat-password")) {
-        alert("Password must match!");
-        return ;
+        displayNotification("Password must match!", "rgb(255, 0, 0)");
+        return false;
     }
 
-    alert("Form submitted successfully!")
-    console.log(formData.get("username"));
+    displayNotification("Form submitted successfully!", "rgb(19, 167, 0)")
+    return true;
 }
 
 submitButton.addEventListener("click", (event) => {
-    event.preventDefault();
-
     checkUserInput();
+    if (checkUserInput()) {
+        console.log("Form submitted successfully.");
+    } else {
+        event.preventDefault();
+    }
 })

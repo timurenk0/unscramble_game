@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../popup-notifications-styles.css">
 </head>
 <body>
+    <div id="popup-notification-wrapper">
+        <p id="notification-text"></p>
+    </div>
     <div id="signup-wrapper">
         <p id="signup-text">Sign Up</p>
         <form id="submission-form">
@@ -22,7 +26,8 @@
             <button id="submit" type="submit">Sign Up</button>
         </form>
 
-        <script src="signup_script.js"></script>
+        <script type="module" src="signup_script.js"></script>
+        <script type="module" src="../popup-notifications-handler.js"></script>
     </div>
 </body>
 </html>
