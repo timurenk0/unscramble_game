@@ -9,17 +9,17 @@ const authorName = "timurenk0";
 authorNameTextEl.textContent = authorName;
 
 const words = [
-    "apple", "brave", "chair", "dance", "eagle", "faith", "giant", "house", "input", "jolly", 
-    "kitten", "laptop", "magic", "noble", "ocean", "pencil", "quilt", "robot", "sunny", "tiger", 
-    "unite", "vivid", "whale", "youth", "zebra", "angle", "brisk", "craft", "dream", "early", 
-    "frost", "grape", "heart", "image", "joint", "kneel", "level", "mount", "night", "opera", 
-    "proud", "quiet", "ridge", "skill", "tower", "urban", "vocal", "witty", "yacht", "bloom", 
-    "climb", "drift", "ember", "flora", "globe", "hover", "ivory", "jewel", "koala", "laser", 
-    "mimic", "nurse", "orbit", "pearl", "quark", "rumor", "shore", "toast", "ultra", "valve", 
-    "waver", "xenon", "zesty", "ample", "brick", "candy", "doubt", "elite", "fancy", "gloom", 
-    "hasty", "irony", "joker", "kiosk", "limit", "moral", "nerve", "olive", "prime", "quilt", 
+    "apple", "brave", "chair", "dance", "eagle", "faith", "giant", "house", "input", "jolly",
+    "kitten", "laptop", "magic", "noble", "ocean", "pencil", "quilt", "robot", "sunny", "tiger",
+    "unite", "vivid", "whale", "youth", "zebra", "angle", "brisk", "craft", "dream", "early",
+    "frost", "grape", "heart", "image", "joint", "kneel", "level", "mount", "night", "opera",
+    "proud", "quiet", "ridge", "skill", "tower", "urban", "vocal", "witty", "yacht", "bloom",
+    "climb", "drift", "ember", "flora", "globe", "hover", "ivory", "jewel", "koala", "laser",
+    "mimic", "nurse", "orbit", "pearl", "quark", "rumor", "shore", "toast", "ultra", "valve",
+    "waver", "xenon", "zesty", "ample", "brick", "candy", "doubt", "elite", "fancy", "gloom",
+    "hasty", "irony", "joker", "kiosk", "limit", "moral", "nerve", "olive", "prime", "quilt",
     "realm", "solid", "tense", "unity", "vigor", "world", "yield"
-  ];
+];
 
 let scrambledWordIndex;
 let score = 0;
@@ -37,8 +37,8 @@ function scrambleWord(word) {
 
     let charArray = word.split("");
 
-    for (let i = charArray.length-1; i>0; i--) {
-        const j = Math.floor(Math.random()*(i-1));
+    for (let i = charArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i - 1));
 
         [charArray[i], charArray[j]] = [charArray[j], charArray[i]];
     }
@@ -48,22 +48,22 @@ function scrambleWord(word) {
 
 function updateGame() {
     userInputEl.value = "";
-    
-    let randomIndex = Math.floor(Math.random()*(words.length-1));
+
+    let randomIndex = Math.floor(Math.random() * (words.length - 1));
     scrambledWordIndex = randomIndex;
     scrambledWordTextEl.textContent = scrambleWord(words[randomIndex]);
     scoreTextEl.textContent = score;
 }
 
 function checkUserInput() {
-    let userInput = userInputEl.value;
-    
+    let userInput = userInputEl.value.trim();
+
     if (userInput === "") {
         displayNotification("Input cannot be empty!", "rgba(0, 0, 0, 0.5)");
-        return ;
-    } 
+        return;
+    }
     if (userInput === words[scrambledWordIndex]) {
-        score+=1;
+        score += 1;
         updateGame();
         displayAddedScore();
         displayNotification("Good job!", "rgb(19, 167, 0)");
