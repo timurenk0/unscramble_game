@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unscramble</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../popup-notifications-styles.css">
+    <link rel="stylesheet" href="../css/game_styles.css">
+    <link rel="stylesheet" href="../css/popup_notifications_styles.css">
 </head>
+
 <body>
     <div id="popup-notification-wrapper">
         <p id="notification-text"></p>
@@ -17,13 +19,15 @@
             <p id="added-score">+1</p>
         </div>
         <p id="main-text">Unscramble: <span id="scrambled-word">scrambled</span></p>
-        <input id="user-input" type="text" placeholder="Your guess..." autocomplete="off"></input>
-        <p id="copywright-text">Created by: <a id="author-name" href="https://github.com/timurenk0" target="_blank"></a></p>
+        <input id="user-input" type="text" placeholder="Your guess..." autocomplete="off">
+        <p id="copywright-text">Created by: <a id="author-name" href="https://github.com/timurenk0" target="_blank"></a>
+        </p>
     </div>
 
 
 
-    <script type="module" src="script.js"></script>
-    <script type="module" src="../popup-notifications-handler.js"></script>
+    <script type="module" src="../js/game_script.js"></script>
+    <script type="module" src="../js/popup_notifications_handler.js"></script>
 </body>
+
 </html>

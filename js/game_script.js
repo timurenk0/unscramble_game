@@ -1,4 +1,4 @@
-import { displayNotification, displayAddedScore } from "../popup-notifications-handler.js";
+import { displayNotification, displayAddedScore } from "./popup_notifications_handler.js";
 
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");

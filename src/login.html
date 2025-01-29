@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../popup-notifications-styles.css">
+    <title>Log in</title>
+    <link rel="stylesheet" href="../css/login_styles.css">
+    <link rel="stylesheet" href="../css/popup_notifications_styles.css">
 </head>
+
 <body>
+    <div id="switch-page">
+        <a href="./signup.html">Sign Up</a>
+    </div>
     <div id="popup-notification-wrapper">
         <p id="notification-text"></p>
     </div>
     <div id="signup-wrapper">
-        <p id="signup-text">Sign Up</p>
+        <p id="signup-text">Log in</p>
         <form id="submission-form">
             <input id="username-input" type="text" placeholder="Username" name="username">
             <div class="password-wrapper">
                 <input id="password-input" type="password" placeholder="Password" name="password">
                 <button class="toggle-password" type="button">show</button>
             </div>
-            <div class="password-wrapper">
-                <input id="repeat-password-input" type="password" placeholder="Repeat password" name="repeat-password">
-                <button class="toggle-password" type="button">show</button>
-            </div>
-            <button id="submit" type="submit">Sign Up</button>
+            <button id="submit" type="submit">Log in</button>
         </form>
-
-        <script type="module" src="signup_script.js"></script>
-        <script type="module" src="../popup-notifications-handler.js"></script>
     </div>
+
+    <script type="module" src="../js/login_script.js"></script>
+    <script type="module" src="../js/popup-notifications-handler.js"></script>
+    <script type="module" src="../js/user_input_handler.js"></script>
 </body>
+
 </html>
