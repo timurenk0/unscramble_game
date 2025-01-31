@@ -18,6 +18,22 @@ body {
     align-items: center;
 }
 
+#menu-button-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 16px 12px;
+}
+
+#menu-button-wrapper a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: grey;
+}
+
 #game-wrapper {
     position: relative;
 
