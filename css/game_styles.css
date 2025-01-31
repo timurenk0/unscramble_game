@@ -18,6 +18,19 @@ body {
     align-items: center;
 }
 
+#timer-wrapper {
+    position: absolute;
+    top: 100px;
+    right: 50%;
+    transform: translate(50%);
+
+    font-size: 32px;
+}
+
+#timer-wrapper span {
+    color: red;
+}
+
 #menu-button-wrapper {
     position: absolute;
     top: 0;

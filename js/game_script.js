@@ -1,4 +1,5 @@
 import { displayNotification, displayAddedScore } from "./popup_notifications_handler.js";
+import { updateTimer, isTimeOut } from "./game_timer_handler.js";
 
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
@@ -26,6 +27,7 @@ let score = 0;
 
 updateGame();
 
+
 function scrambleWord(word) {
     if (typeof word !== "string") {
         throw new Error("Invalid input type");
@@ -47,6 +49,7 @@ function scrambleWord(word) {
 }
 
 function updateGame() {
+
     userInputEl.value = "";
 
     let randomIndex = Math.floor(Math.random() * (words.length - 1));
@@ -57,6 +60,7 @@ function updateGame() {
 
 function checkUserInput() {
     let userInput = userInputEl.value.trim();
+
 
     if (userInput === "") {
         displayNotification("Input cannot be empty!", "rgba(0, 0, 0, 0.5)");
@@ -73,7 +77,14 @@ function checkUserInput() {
     }
 }
 
-document.addEventListener("keydown", (event) => {
+let timerFlag = true;
+
+
+userInputEl.addEventListener("keydown", (event) => {
+    if (timerFlag) {
+        updateTimer();
+        timerFlag = false;
+    }
     if (event.key === "Enter") {
         checkUserInput();
     }
