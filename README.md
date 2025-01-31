@@ -18,6 +18,7 @@ Game where a player needs to successfully unscramble the riddled word
    - Implement simple logic✅
    - Find a nicer way to deal with user input upon the end of timer
    - Add several time modes (30s, 60s, custom?) for user to choose
+   - Implement top score system
 
 # Goals
 
