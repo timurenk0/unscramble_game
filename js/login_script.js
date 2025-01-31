@@ -19,4 +19,11 @@ togglePasswordButton.addEventListener("click", () => {
     }
 })
 
-checkUserInput(form);
+submitButton.addEventListener("click", (event) => {
+    checkUserInput(form);
+    if (checkUserInput(form)) {
+        console.log("Form submitted successfully");
+    } else {
+        event.preventDefault();
+    }
+})

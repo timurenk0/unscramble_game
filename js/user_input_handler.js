@@ -13,9 +13,12 @@ export function checkUserInput(form) {
     if (formData.get("password").length < 4) {
         displayNotification("Password cannot be shorter than 4 characters!", "rgb(255, 0, 0)");
         return false;
-    } else if (formData.get("password") !== formData.get("repeat-password")) {
-        displayNotification("Password must match!", "rgb(255, 0, 0)");
-        return false;
+    }
+    if (formData.get("repeat-password")) {
+        if (formData.get("password") !== formData.get("repeat-password")) {
+            displayNotification("Password must match!", "rgb(255, 0, 0)");
+            return false;
+        }
     }
 
     displayNotification("Form submitted successfully!", "rgb(19, 167, 0)")
