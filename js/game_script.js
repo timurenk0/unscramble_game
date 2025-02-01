@@ -1,10 +1,11 @@
 import { displayNotification, displayAddedScore } from "./popup_notifications_handler.js";
-import { updateTimer, isTimeOut } from "./game_timer_handler.js";
+import { isTimeOut, updateTimer } from "./game_timer_handler.js";
 
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
 const scoreTextEl = document.getElementById("score");
 const authorNameTextEl = document.getElementById("author-name");
+const maxScoreTextEl = document.getElementById("max-score");
 
 const authorName = "timurenk0";
 authorNameTextEl.textContent = authorName;
@@ -24,6 +25,7 @@ const words = [
 
 let scrambledWordIndex;
 let score = 0;
+maxScoreTextEl.textContent = score;
 
 updateGame();
 
@@ -87,5 +89,9 @@ userInputEl.addEventListener("keydown", (event) => {
     }
     if (event.key === "Enter") {
         checkUserInput();
+    }
+    if (isTimeOut) {
+        userInputEl.disabled = true;
+        maxScoreTextEl.textContent = score;
     }
 })

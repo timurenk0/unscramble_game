@@ -12,7 +12,6 @@ function updateTimer() {
         if (timeLeft === 0) {
             clearInterval(handleTimer);
             isTimeOut = true;
-            userInputEl.disabled = true;
         }
     }, 50)
 }
