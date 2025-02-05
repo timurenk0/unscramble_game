@@ -24,5 +24,5 @@ Game where a player needs to successfully unscramble the riddled word
 
 - Basic game logic ✅
 - SignUp/Login logic ✅
-- Limited time gamemode
+- Limited time gamemode ✅
 - Leaderboard system
