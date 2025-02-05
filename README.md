@@ -15,10 +15,10 @@ Game where a player needs to successfully unscramble the riddled word
    - Implement database system (necessary for a leaderboard system)
 
 4. Working on a limited time gamemode
-   - Implement simple logic✅
+   - Implement simple logic ✅
    - Find a nicer way to deal with user input upon the end of timer
    - Add several time modes (30s, 60s, custom?) for user to choose
-   - Implement top score system
+   - Implement top score system ✅
 
 # Goals
 

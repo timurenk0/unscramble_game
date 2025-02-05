@@ -1,12 +1,14 @@
 import { displayNotification, displayAddedScore } from "./popup_notifications_handler.js";
 import { isTimeOut, updateTimer } from "./game_timer_handler.js";
 
+// Get HTML elements
 const scrambledWordTextEl = document.getElementById("scrambled-word");
 const userInputEl = document.getElementById("user-input");
 const scoreTextEl = document.getElementById("score");
 const authorNameTextEl = document.getElementById("author-name");
 const maxScoreTextEl = document.getElementById("max-score");
 
+// Set author name at the bottom of the game wrapper
 const authorName = "timurenk0";
 authorNameTextEl.textContent = authorName;
 
@@ -23,22 +25,28 @@ const words = [
     "realm", "solid", "tense", "unity", "vigor", "world", "yield"
 ];
 
-let scrambledWordIndex;
+// Set current score value
 let score = 0;
-maxScoreTextEl.textContent = score;
 
-updateGame();
+// Set max score value to the session storage
+function setMaxScore(score) {
+    let maxScore = sessionStorage.getItem("guest_score") || 0;
+    if (maxScore < score) {
+        maxScore = sessionStorage.setItem("guest_score", score);
+    }
+}
+
+// Get max score value
+function getMaxScore() {
+    return sessionStorage.getItem("guest_score");
+}
+
+// Display max score value on the page
+maxScoreTextEl.textContent = getMaxScore();
 
 
+// Word scrambling logic
 function scrambleWord(word) {
-    if (typeof word !== "string") {
-        throw new Error("Invalid input type");
-    }
-
-    if (word.length <= 1) {
-        return word;
-    }
-
     let charArray = word.split("");
 
     for (let i = charArray.length - 1; i > 0; i--) {
@@ -50,6 +58,13 @@ function scrambleWord(word) {
     return charArray.join("");
 }
 
+// Initialize variable for the index of the scrambled word to track it in the future
+let scrambledWordIndex;
+
+// Initial game update to start everything
+updateGame();
+
+// Game update logic
 function updateGame() {
 
     userInputEl.value = "";
@@ -57,17 +72,20 @@ function updateGame() {
     let randomIndex = Math.floor(Math.random() * (words.length - 1));
     scrambledWordIndex = randomIndex;
     scrambledWordTextEl.textContent = scrambleWord(words[randomIndex]);
+
     scoreTextEl.textContent = score;
 }
 
+// User input check logic
 function checkUserInput() {
-    let userInput = userInputEl.value.trim();
 
+    let userInput = userInputEl.value.trim();
 
     if (userInput === "") {
         displayNotification("Input cannot be empty!", "rgba(0, 0, 0, 0.5)");
         return;
     }
+
     if (userInput === words[scrambledWordIndex]) {
         score += 1;
         updateGame();
@@ -79,9 +97,10 @@ function checkUserInput() {
     }
 }
 
+// A flag for one-time execution of updateTimer() function
 let timerFlag = true;
 
-
+// Event listener for every key press for userInput element
 userInputEl.addEventListener("keydown", (event) => {
     if (timerFlag) {
         updateTimer();
@@ -92,6 +111,7 @@ userInputEl.addEventListener("keydown", (event) => {
     }
     if (isTimeOut) {
         userInputEl.disabled = true;
-        maxScoreTextEl.textContent = score;
+        setMaxScore(score);
+        maxScoreTextEl.textContent = getMaxScore();
     }
 })

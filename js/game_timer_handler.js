@@ -13,7 +13,7 @@ function updateTimer() {
             clearInterval(handleTimer);
             isTimeOut = true;
         }
-    }, 50)
+    }, 500)
 }
 
 export { updateTimer, isTimeOut };
